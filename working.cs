@@ -52,7 +52,7 @@ namespace recipe_App
                         ResetQuantities(recipe);
                         break;
                     case "5":
-                        ClearData(recipe);
+                       Environment.Exit(0);         
                         break;
                     case "6":
                         Environment.Exit(0);
@@ -123,18 +123,14 @@ namespace recipe_App
 
         public void ClearData(Recipe recipe)
         {
-            recipe.Name = null;
-            recipe.Ingredients = null;
-            recipe.Steps = null;
-
-            Console.WriteLine("Data cleared successfully");
+         Console.WriteLine("Data cleared successfully");
         }
 
         public void ResetQuantities(Recipe recipe)
-        {
+        {                               
             recipe.Name = null;
             recipe.Ingredients = null;
-            recipe.Steps = null;
+            recipe.Steps = null;                  
             Console.WriteLine("Quantities reset successfully");
         }   
     }
