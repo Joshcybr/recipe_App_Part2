@@ -1,15 +1,17 @@
 ﻿using System;
-
 namespace recipe_App
 {
     public class working
     {
+        // Recipe class to hold recipe details
         public class Recipe
         {
+            // Properties for recipe name, ingredients, and steps
             public string Name { get; set; }
             public string[] Ingredients { get; set; }
             public string[] Steps { get; set; }
 
+            // Constructor to initialize properties
             public Recipe()
             {
                 Name = null;
@@ -18,6 +20,7 @@ namespace recipe_App
             }
         }
 
+        // Method to display the main menu and handle user choices
         public void Menu(Recipe recipe)
         {
             Console.WriteLine("Please enter your name:");
@@ -27,6 +30,7 @@ namespace recipe_App
             Console.WriteLine("Let's get cooking!");
             Console.WriteLine("\n");
 
+            // Main menu loop
             while (true)
             {
                 // Display menu options
@@ -40,6 +44,7 @@ namespace recipe_App
 
                 string choice = Console.ReadLine();
 
+                // Switch case to handle user choices
                 switch (choice)
                 {
                     case "1":
@@ -77,6 +82,7 @@ namespace recipe_App
             int ingredientsCount = int.Parse(Console.ReadLine());
             recipe.Ingredients = new string[ingredientsCount];
 
+            // Loop to input ingredients
             for (int i = 0; i < ingredientsCount; i++)
             {
                 Console.WriteLine("Enter ingredient " + (i + 1) + ":");
@@ -87,6 +93,8 @@ namespace recipe_App
             int stepsCount = int.Parse(Console.ReadLine());
             recipe.Steps = new string[stepsCount];
             Console.WriteLine("\n");
+
+            // Loop to input steps
             for (int i = 0; i < stepsCount; i++)
             {
                 Console.WriteLine("Enter step " + (i + 1) + ":");
@@ -100,12 +108,16 @@ namespace recipe_App
             Console.WriteLine("Dish name: " + recipe.Name);
             Console.WriteLine("\n");
             Console.WriteLine("YOU WILL NEED THE FOLLOWING INGREDIENTS:");
+
+            // Loop to display ingredients
             for (int i = 0; i < recipe.Ingredients.Length; i++)
             {
                 Console.WriteLine("- " + recipe.Ingredients[i]);
             }
 
             Console.WriteLine("HERE ARE THE STEPS TO FOLLOW:");
+
+            // Loop to display steps
             foreach (var step in recipe.Steps)
             {
                 Console.WriteLine("- " + step);
@@ -119,6 +131,8 @@ namespace recipe_App
             double scale = double.Parse(Console.ReadLine());
             Console.WriteLine("\n");
             Console.WriteLine("Scaled ingredients:");
+
+            // Loop to scale ingredients
             for (int i = 0; i < recipe.Ingredients.Length; i++)
             {
                 Console.WriteLine("\n");
@@ -134,6 +148,7 @@ namespace recipe_App
         // Method to clear recipe data
         public void ClearData(Recipe recipe)
         {
+            // Reset recipe properties to null
             recipe.Name = null;
             recipe.Ingredients = null;
             recipe.Steps = null;
@@ -143,6 +158,7 @@ namespace recipe_App
         // Method to reset recipe quantities
         public void ResetQuantities(Recipe recipe)
         {
+            // Reset recipe properties to null
             recipe.Name = null;
             recipe.Ingredients = null;
             recipe.Steps = null;
@@ -150,3 +166,4 @@ namespace recipe_App
         }
     }
 }
+//------------------------------END  OF FILE--------------------------------
