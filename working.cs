@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static recipe_App.working;
 
 namespace recipe_App
 {
@@ -88,7 +89,45 @@ namespace recipe_App
             }
         }
     }
+    static void DisplayRecipe(Recipe recipe)
+    {
+        Console.WriteLine("Dish name: " + recipe.Name);
+        Console.WriteLine("YOU WILL NEED THE FOLLOWING INGREDIENTS:");
+        for (int i = 0; i < recipe.Ingredients.Length; i++)
+        {
+            Console.WriteLine("- " + recipe.Ingredients[i]);
+        }
+        Console.WriteLine("HERE ARE THE STEPS TO FOLLOW:");
+        foreach (var step in recipe.Steps)
+        {
+            Console.WriteLine("- " + step);
+        }
+    }
+
+    public void Scale()
+    {
+        Console.WriteLine("Enter the scale factor:");
+        double scale = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("Scaled ingredients:");
+        for (int i = 0; i < recipe.Ingredients.Length; i++)
+        {
+            Console.WriteLine($"Enter quantity for {recipe.Ingredients[i]}:");
+            double quantity = double.Parse(Console.ReadLine());
+            double scaledQuantity = quantity * scale;
+            Console.WriteLine($"{scaledQuantity} {recipe.Ingredients[i]}");
+        }
+        Console.WriteLine("Recipe scaled successfully!");
+    }
 }
+
+
+
+    
+
+
+
+
 
 
 

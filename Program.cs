@@ -14,7 +14,8 @@ namespace recipe_App
             Recipe recipe = new Recipe();
             working working = new working();
             working.Menu(recipe);
-            working.EnterRecipeDetails(recipe);   
+            working.EnterRecipeDetails(recipe); 
+            working.scale(recipe);  
         }
 
     }
