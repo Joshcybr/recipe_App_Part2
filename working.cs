@@ -89,7 +89,7 @@ namespace recipe_App
             }
         }
     }
-    static void DisplayRecipe(Recipe recipe)
+    public  void DisplayRecipe(Recipe recipe)
     {
         Console.WriteLine("Dish name: " + recipe.Name);
         Console.WriteLine("YOU WILL NEED THE FOLLOWING INGREDIENTS:");
@@ -102,8 +102,9 @@ namespace recipe_App
         {
             Console.WriteLine("- " + step);
         }
-    }
+    }       
 
+                                                                                           
     public void Scale()
     {
         Console.WriteLine("Enter the scale factor:");
@@ -118,12 +119,13 @@ namespace recipe_App
             Console.WriteLine($"{scaledQuantity} {recipe.Ingredients[i]}");
         }
         Console.WriteLine("Recipe scaled successfully!");
-    }
-}
+    } 
+    //let user display recipe   
 
 
 
-    
+
+
 
 
 
