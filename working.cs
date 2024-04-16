@@ -132,9 +132,11 @@ namespace recipe_App
 
         public void ResetQuantities(Recipe recipe)
         {
-            // You can implement this method as needed.
+            recipe.Name = null;
+            recipe.Ingredients = null;
+            recipe.Steps = null;
             Console.WriteLine("Quantities reset successfully");
-        }
+        }   
     }
 }
 
