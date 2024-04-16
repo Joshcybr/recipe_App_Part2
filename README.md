@@ -14,6 +14,8 @@ Welcome to the Recipe App! This console application allows you to manage your re
 - C#.NET Framework
 -visual studio 
 
+![image](https://github.com/Joshcybr/recipe_App/assets/105593188/9b566a6b-4fde-4390-b07c-036269466021)
+![image](https://github.com/Joshcybr/recipe_App/assets/105593188/cdbc50bd-22d5-49ac-9c7c-d51c0193c578)
 
 - Joshua(https://github.com/Joshcybr/recipe_App.git)
 
