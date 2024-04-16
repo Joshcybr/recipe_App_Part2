@@ -86,7 +86,7 @@ namespace recipe_App
             Console.WriteLine("How many steps are there?");
             int stepsCount = int.Parse(Console.ReadLine());
             recipe.Steps = new string[stepsCount];
-
+            Console.WriteLine("\n");
             for (int i = 0; i < stepsCount; i++)
             {
                 Console.WriteLine("Enter step " + (i + 1) + ":");
@@ -126,6 +126,7 @@ namespace recipe_App
                 double quantity = double.Parse(Console.ReadLine());
                 double scaledQuantity = quantity * scale;
                 Console.WriteLine($"{scaledQuantity} {recipe.Ingredients[i]}");
+
             }
             Console.WriteLine("Recipe scaled successfully!");
         }
