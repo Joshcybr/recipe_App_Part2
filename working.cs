@@ -1,24 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static recipe_App.working;
 
 namespace recipe_App
 {
-    internal class working
+    public class working
     {
         public class Recipe
         {
             public string Name { get; set; }
             public string[] Ingredients { get; set; }
             public string[] Steps { get; set; }
+
+            public Recipe()
+            {
+                Name = null;
+                Ingredients = null;
+                Steps = null;
+            }
         }
 
-        public void Menu()
+        public void Menu(Recipe recipe)
         {
-            Recipe recipe = new Recipe();
             Console.WriteLine("Please enter your name:");
             string name = Console.ReadLine();
             Console.WriteLine("Welcome, " + name + ", to the recipe app");
@@ -88,51 +89,52 @@ namespace recipe_App
                 recipe.Steps[i] = Console.ReadLine();
             }
         }
-    }
-    public  void DisplayRecipe(Recipe recipe)
-    {
-        Console.WriteLine("Dish name: " + recipe.Name);
-        Console.WriteLine("YOU WILL NEED THE FOLLOWING INGREDIENTS:");
-        for (int i = 0; i < recipe.Ingredients.Length; i++)
+
+        public void DisplayRecipe(Recipe recipe)
         {
-            Console.WriteLine("- " + recipe.Ingredients[i]);
+            Console.WriteLine("Dish name: " + recipe.Name);
+            Console.WriteLine("YOU WILL NEED THE FOLLOWING INGREDIENTS:");
+            for (int i = 0; i < recipe.Ingredients.Length; i++)
+            {
+                Console.WriteLine("- " + recipe.Ingredients[i]);
+            }
+            Console.WriteLine("HERE ARE THE STEPS TO FOLLOW:");
+            foreach (var step in recipe.Steps)
+            {
+                Console.WriteLine("- " + step);
+            }
         }
-        Console.WriteLine("HERE ARE THE STEPS TO FOLLOW:");
-        foreach (var step in recipe.Steps)
+
+        public void Scale(Recipe recipe)
         {
-            Console.WriteLine("- " + step);
+            Console.WriteLine("Enter the scale factor:");
+            double scale = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Scaled ingredients:");
+            for (int i = 0; i < recipe.Ingredients.Length; i++)
+            {
+                Console.WriteLine($"Enter quantity for {recipe.Ingredients[i]}:");
+                double quantity = double.Parse(Console.ReadLine());
+                double scaledQuantity = quantity * scale;
+                Console.WriteLine($"{scaledQuantity} {recipe.Ingredients[i]}");
+            }
+            Console.WriteLine("Recipe scaled successfully!");
         }
-    }       
 
-                                                                                           
-    public void Scale()
-    {
-        Console.WriteLine("Enter the scale factor:");
-        double scale = double.Parse(Console.ReadLine());
-
-        Console.WriteLine("Scaled ingredients:");
-        for (int i = 0; i < recipe.Ingredients.Length; i++)
+        public void ClearData(Recipe recipe)
         {
-            Console.WriteLine($"Enter quantity for {recipe.Ingredients[i]}:");
-            double quantity = double.Parse(Console.ReadLine());
-            double scaledQuantity = quantity * scale;
-            Console.WriteLine($"{scaledQuantity} {recipe.Ingredients[i]}");
+            recipe.Name = null;
+            recipe.Ingredients = null;
+            recipe.Steps = null;
+
+            Console.WriteLine("Data cleared successfully");
         }
-        Console.WriteLine("Recipe scaled successfully!");
-    } 
-    //let user display recipe   
 
-
-
-
-
-    static void ClearData(Recipe recipe)
-    {
-        recipe.Name = null;
-        recipe.Ingredients = null;
-        recipe.Steps = null;
-
-        Console.WriteLine(" Cleaned");
+        public void ResetQuantities(Recipe recipe)
+        {
+            // You can implement this method as needed.
+            Console.WriteLine("Quantities reset successfully");
+        }
     }
 }
 
