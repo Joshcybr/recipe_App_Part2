@@ -26,8 +26,10 @@ namespace recipe_App
             Console.WriteLine("\n");
             Console.WriteLine("Let's get cooking!");
             Console.WriteLine("\n");
+
             while (true)
             {
+                // Display menu options
                 Console.WriteLine("Choose an option:");
                 Console.WriteLine("1. Enter recipe details");
                 Console.WriteLine("2. Display recipe");
@@ -53,7 +55,7 @@ namespace recipe_App
                         ResetQuantities(recipe);
                         break;
                     case "5":
-                       Environment.Exit(0);         
+                        ClearData(recipe);
                         break;
                     case "6":
                         Environment.Exit(0);
@@ -65,6 +67,7 @@ namespace recipe_App
             }
         }
 
+        // Method to enter recipe details
         public void EnterRecipeDetails(Recipe recipe)
         {
             Console.WriteLine("What is the name of your dish?");
@@ -91,6 +94,7 @@ namespace recipe_App
             }
         }
 
+        // Method to display recipe
         public void DisplayRecipe(Recipe recipe)
         {
             Console.WriteLine("Dish name: " + recipe.Name);
@@ -98,10 +102,9 @@ namespace recipe_App
             Console.WriteLine("YOU WILL NEED THE FOLLOWING INGREDIENTS:");
             for (int i = 0; i < recipe.Ingredients.Length; i++)
             {
-                Console.WriteLine("\n");
                 Console.WriteLine("- " + recipe.Ingredients[i]);
             }
-            Console.WriteLine("\n");
+
             Console.WriteLine("HERE ARE THE STEPS TO FOLLOW:");
             foreach (var step in recipe.Steps)
             {
@@ -109,6 +112,7 @@ namespace recipe_App
             }
         }
 
+        // Method to scale recipe
         public void Scale(Recipe recipe)
         {
             Console.WriteLine("Enter the scale factor:");
@@ -126,28 +130,22 @@ namespace recipe_App
             Console.WriteLine("Recipe scaled successfully!");
         }
 
+        // Method to clear recipe data
         public void ClearData(Recipe recipe)
         {
-         Console.WriteLine("Data cleared successfully");
-        }
-
-        public void ResetQuantities(Recipe recipe)
-        {                               
             recipe.Name = null;
             recipe.Ingredients = null;
-            recipe.Steps = null;                  
+            recipe.Steps = null;
+            Console.WriteLine("Data cleared successfully");
+        }
+
+        // Method to reset recipe quantities
+        public void ResetQuantities(Recipe recipe)
+        {
+            recipe.Name = null;
+            recipe.Ingredients = null;
+            recipe.Steps = null;
             Console.WriteLine("Quantities reset successfully");
-        }   
+        }
     }
 }
-
-
-
-
-
-
-
-
-
-
-       
