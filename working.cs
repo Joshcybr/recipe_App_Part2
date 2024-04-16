@@ -23,8 +23,9 @@ namespace recipe_App
             Console.WriteLine("Please enter your name:");
             string name = Console.ReadLine();
             Console.WriteLine("Welcome, " + name + ", to the recipe app");
+            Console.WriteLine("\n");
             Console.WriteLine("Let's get cooking!");
-
+            Console.WriteLine("\n");
             while (true)
             {
                 Console.WriteLine("Choose an option:");
@@ -68,7 +69,7 @@ namespace recipe_App
         {
             Console.WriteLine("What is the name of your dish?");
             recipe.Name = Console.ReadLine();
-
+            Console.WriteLine("\n");
             Console.WriteLine("How many ingredients are there?");
             int ingredientsCount = int.Parse(Console.ReadLine());
             recipe.Ingredients = new string[ingredientsCount];
@@ -93,11 +94,14 @@ namespace recipe_App
         public void DisplayRecipe(Recipe recipe)
         {
             Console.WriteLine("Dish name: " + recipe.Name);
+            Console.WriteLine("\n");
             Console.WriteLine("YOU WILL NEED THE FOLLOWING INGREDIENTS:");
             for (int i = 0; i < recipe.Ingredients.Length; i++)
             {
+                Console.WriteLine("\n");
                 Console.WriteLine("- " + recipe.Ingredients[i]);
             }
+            Console.WriteLine("\n");
             Console.WriteLine("HERE ARE THE STEPS TO FOLLOW:");
             foreach (var step in recipe.Steps)
             {
@@ -109,10 +113,11 @@ namespace recipe_App
         {
             Console.WriteLine("Enter the scale factor:");
             double scale = double.Parse(Console.ReadLine());
-
+            Console.WriteLine("\n");
             Console.WriteLine("Scaled ingredients:");
             for (int i = 0; i < recipe.Ingredients.Length; i++)
             {
+                Console.WriteLine("\n");
                 Console.WriteLine($"Enter quantity for {recipe.Ingredients[i]}:");
                 double quantity = double.Parse(Console.ReadLine());
                 double scaledQuantity = quantity * scale;
