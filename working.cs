@@ -126,6 +126,15 @@ namespace recipe_App
 
 
 
+    static void ClearData(Recipe recipe)
+    {
+        recipe.Name = null;
+        recipe.Ingredients = null;
+        recipe.Steps = null;
+
+        Console.WriteLine(" Cleaned");
+    }
+}
 
 
 
