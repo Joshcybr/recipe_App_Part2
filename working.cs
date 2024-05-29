@@ -37,7 +37,7 @@ namespace recipe_App
                 this.Quantity = quantity;
                 this.Unit = unit;
                 this.Calories = calories;
-                
+                this.FoodGroup = foodGroup;
             }
 
             // Override ToString for better display of Ingredient
@@ -123,9 +123,10 @@ namespace recipe_App
                 Console.WriteLine("Enter calories for ingredient {0}:", i + 1);
                 double calories = double.Parse(Console.ReadLine());
 
-               
+                Console.WriteLine("Enter food group for ingredient {0} (Starchy foods, Vegetables and fruits, Dry beans, peas, lentils and soya, Chicken, fish, meat and eggs, Milk and dairy products, Fats and oil, Water):", i + 1);
+                string foodGroup = Console.ReadLine();
 
-                recipe.Ingredients[i] = new Ingredient(name, quantity, unit, calories);
+                recipe.Ingredients[i] = new Ingredient(name, quantity, unit, calories, foodGroup);
             }
 
             Console.WriteLine("How many steps are there?");
