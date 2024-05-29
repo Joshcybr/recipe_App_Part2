@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace recipe_App
+namespace recipe_App { 
 //st10263292
 //Joshua Thomas
 //refferances
@@ -11,7 +11,8 @@ namespace recipe_App
 //https://www.w3schools.com/cs/cs_user_input.php
 //https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/
 //https://github.com/Joshcybr/recipe_App.git
-{
+//https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/generics-and-arrays
+//https://www.geeksforgeeks.org/c-sharp-delegates/
     class Program
     {
         static void Main(string[] args)

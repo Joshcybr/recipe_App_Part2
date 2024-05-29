@@ -158,6 +158,8 @@ namespace recipe_App
                 Console.WriteLine("\nDish name: " + recipe.Name);
                 Console.WriteLine("YOU WILL NEED THE FOLLOWING INGREDIENTS:");
 
+                double totalCalories = 0; // Variable to store total calories
+
                 // Sort ingredients alphabetically by name
                 recipe.Ingredients.Sort((a, b) => a.Name.CompareTo(b.Name));
 
@@ -165,6 +167,7 @@ namespace recipe_App
                 foreach (Ingredient ingredient in recipe.Ingredients)
                 {
                     Console.WriteLine("- " + ingredient);
+                    totalCalories += ingredient.Calories * ingredient.Quantity; // Add calories of each ingredient
                 }
 
                 Console.WriteLine("HERE ARE THE STEPS TO FOLLOW:");
@@ -174,9 +177,13 @@ namespace recipe_App
                 {
                     Console.WriteLine("- " + step);
                 }
+
+                // Check if total calories exceed 300 and display message
+
             }
             Console.WriteLine();
         }
+
 
         // Method to scale recipe
         public void Scale(List<Recipe> recipes)
