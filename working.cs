@@ -10,15 +10,15 @@ namespace recipe_App
         {
             // Properties for recipe name, ingredients, and steps
             public string Name { get; set; }
-            public Ingredient[] Ingredients { get; set; }
-            public string[] Steps { get; set; }
+            public List<Ingredient> Ingredients { get; set; }
+            public List<string> Steps { get; set; }
 
             // Constructor to initialize properties
             public Recipe()
             {
                 Name = null;
-                Ingredients = null;
-                Steps = null;
+                Ingredients = new List<Ingredient>();
+                Steps = new List<string>();
             }
         }
 
@@ -106,7 +106,6 @@ namespace recipe_App
 
             Console.WriteLine("How many ingredients are there?");
             int ingredientsCount = int.Parse(Console.ReadLine());
-            recipe.Ingredients = new Ingredient[ingredientsCount];
 
             // Loop to input ingredients
             for (int i = 0; i < ingredientsCount; i++)
@@ -126,19 +125,18 @@ namespace recipe_App
                 Console.WriteLine("Enter food group for ingredient {0} (Starchy foods, Vegetables and fruits, Dry beans, peas, lentils and soya, Chicken, fish, meat and eggs, Milk and dairy products, Fats and oil, Water):", i + 1);
                 string foodGroup = Console.ReadLine();
 
-                recipe.Ingredients[i] = new Ingredient(name, quantity, unit, calories, foodGroup);
+                recipe.Ingredients.Add(new Ingredient(name, quantity, unit, calories, foodGroup));
             }
 
             Console.WriteLine("How many steps are there?");
             int stepsCount = int.Parse(Console.ReadLine());
-            recipe.Steps = new string[stepsCount];
             Console.WriteLine("\n");
 
             // Loop to input steps
             for (int i = 0; i < stepsCount; i++)
             {
                 Console.WriteLine("Enter step {0}:", i + 1);
-                recipe.Steps[i] = Console.ReadLine();
+                recipe.Steps.Add(Console.ReadLine());
             }
         }
 
@@ -161,7 +159,7 @@ namespace recipe_App
                 Console.WriteLine("YOU WILL NEED THE FOLLOWING INGREDIENTS:");
 
                 // Sort ingredients alphabetically by name
-                Array.Sort(recipe.Ingredients, (a, b) => a.Name.CompareTo(b.Name));
+                recipe.Ingredients.Sort((a, b) => a.Name.CompareTo(b.Name));
 
                 // Loop to display ingredients with name, quantity, and unit
                 foreach (Ingredient ingredient in recipe.Ingredients)
@@ -204,10 +202,10 @@ namespace recipe_App
             Console.WriteLine("Scaled ingredients:");
 
             // Loop to scale ingredients
-            for (int i = 0; i < recipe.Ingredients.Length; i++)
+            foreach (Ingredient ingredient in recipe.Ingredients)
             {
-                recipe.Ingredients[i].Quantity *= scale;
-                Console.WriteLine(recipe.Ingredients[i]);
+                ingredient.Quantity *= scale;
+                Console.WriteLine(ingredient);
             }
             Console.WriteLine("Recipe scaled successfully!");
         }
