@@ -179,7 +179,10 @@ namespace recipe_App
                 }
 
                 // Check if total calories exceed 300 and display message
-
+                if (totalCalories > 300)
+                {
+                    Console.WriteLine("Warning: This recipe has over 300 calories!");
+                }
             }
             Console.WriteLine();
         }
