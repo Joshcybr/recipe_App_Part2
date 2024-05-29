@@ -52,10 +52,7 @@ namespace recipe_App
         {
             Console.WriteLine("Please enter your name:");
             string name = Console.ReadLine();
-            Console.WriteLine("Welcome, " + name + ", to the recipe app");
-            Console.WriteLine("\n");
-            Console.WriteLine("Let's get cooking!");
-            Console.WriteLine("\n");
+            Console.WriteLine("\nWelcome, " + name + ", to the recipe app\n");
 
             // Main menu loop
             while (true)
@@ -66,7 +63,7 @@ namespace recipe_App
                 Console.WriteLine("2. Display recipes");
                 Console.WriteLine("3. Scale recipe");
                 Console.WriteLine("4. Clear all data");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. Exit\n");
 
                 string choice = Console.ReadLine();
 
@@ -91,7 +88,7 @@ namespace recipe_App
                         Environment.Exit(0);
                         break;
                     default:
-                        Console.WriteLine("Invalid choice. Please try again.");
+                        Console.WriteLine("Invalid choice. Please try again.\n");
                         break;
                 }
             }
@@ -102,10 +99,11 @@ namespace recipe_App
         {
             Console.WriteLine("What is the name of your recipe?");
             recipe.Name = Console.ReadLine();
-            Console.WriteLine("\n");
+            Console.WriteLine();
 
             Console.WriteLine("How many ingredients are there?");
             int ingredientsCount = int.Parse(Console.ReadLine());
+            Console.WriteLine();
 
             // Loop to input ingredients
             for (int i = 0; i < ingredientsCount; i++)
@@ -126,17 +124,19 @@ namespace recipe_App
                 string foodGroup = Console.ReadLine();
 
                 recipe.Ingredients.Add(new Ingredient(name, quantity, unit, calories, foodGroup));
+                Console.WriteLine();
             }
 
             Console.WriteLine("How many steps are there?");
             int stepsCount = int.Parse(Console.ReadLine());
-            Console.WriteLine("\n");
+            Console.WriteLine();
 
             // Loop to input steps
             for (int i = 0; i < stepsCount; i++)
             {
                 Console.WriteLine("Enter step {0}:", i + 1);
                 recipe.Steps.Add(Console.ReadLine());
+                Console.WriteLine();
             }
         }
 
@@ -145,7 +145,7 @@ namespace recipe_App
         {
             if (recipes.Count == 0)
             {
-                Console.WriteLine("No recipes entered yet.");
+                Console.WriteLine("No recipes entered yet.\n");
                 return;
             }
 
@@ -175,6 +175,7 @@ namespace recipe_App
                     Console.WriteLine("- " + step);
                 }
             }
+            Console.WriteLine();
         }
 
         // Method to scale recipe
@@ -182,23 +183,25 @@ namespace recipe_App
         {
             if (recipes.Count == 0)
             {
-                Console.WriteLine("No recipes entered yet.");
+                Console.WriteLine("No recipes entered yet.\n");
                 return;
             }
 
             Console.WriteLine("Enter the name of the recipe you want to scale:");
             string recipeName = Console.ReadLine();
+            Console.WriteLine();
 
             Recipe recipe = recipes.Find(r => r.Name.Equals(recipeName, StringComparison.OrdinalIgnoreCase));
             if (recipe == null)
             {
-                Console.WriteLine("Recipe not found.");
+                Console.WriteLine("Recipe not found.\n");
                 return;
             }
 
             Console.WriteLine("Enter the scale factor:");
             double scale = double.Parse(Console.ReadLine());
-            Console.WriteLine("\n");
+            Console.WriteLine();
+
             Console.WriteLine("Scaled ingredients:");
 
             // Loop to scale ingredients
@@ -207,14 +210,14 @@ namespace recipe_App
                 ingredient.Quantity *= scale;
                 Console.WriteLine(ingredient);
             }
-            Console.WriteLine("Recipe scaled successfully!");
+            Console.WriteLine("Recipe scaled successfully!\n");
         }
 
         // Method to clear all recipe data
         public void ClearData(List<Recipe> recipes)
         {
             recipes.Clear();
-            Console.WriteLine("All data cleared successfully");
+            Console.WriteLine("All data cleared successfully\n");
         }
     }
 }
