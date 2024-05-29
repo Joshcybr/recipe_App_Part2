@@ -1,4 +1,7 @@
-﻿namespace recipe_App
+﻿using System;
+using System.Collections.Generic;
+
+namespace recipe_App
 {
     public class working
     {
@@ -41,7 +44,7 @@
         }
 
         // Method to display the main menu and handle user choices
-        public void Menu(Recipe recipe)
+        public void Menu(List<Recipe> recipes)
         {
             Console.WriteLine("Please enter your name:");
             string name = Console.ReadLine();
@@ -56,11 +59,10 @@
                 // Display menu options
                 Console.WriteLine("Choose an option:");
                 Console.WriteLine("1. Enter recipe details");
-                Console.WriteLine("2. Display recipe");
+                Console.WriteLine("2. Display recipes");
                 Console.WriteLine("3. Scale recipe");
-                Console.WriteLine("4. Reset quantities");
-                Console.WriteLine("5. Clear all data");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("4. Clear all data");
+                Console.WriteLine("5. Exit");
 
                 string choice = Console.ReadLine();
 
@@ -68,21 +70,20 @@
                 switch (choice)
                 {
                     case "1":
+                        Recipe recipe = new Recipe();
                         EnterRecipeDetails(recipe);
+                        recipes.Add(recipe);
                         break;
                     case "2":
-                        DisplayRecipe(recipe);
+                        DisplayRecipes(recipes);
                         break;
                     case "3":
-                        Scale(recipe);
+                        Scale(recipes);
                         break;
                     case "4":
-                        ResetQuantities(recipe);
+                        ClearData(recipes);
                         break;
                     case "5":
-                        ClearData(recipe);
-                        break;
-                    case "6":
                         Environment.Exit(0);
                         break;
                     default:
@@ -131,43 +132,47 @@
             }
         }
 
-        // Method to display recipe
-        public void DisplayRecipe(Recipe recipe)
-        {
-            if (recipe.Name == null)
+            // Loop to display each recipe
+            foreach (Recipe recipe in recipes)
             {
-                Console.WriteLine("No recipe entered yet.");
-                return;
-            }
+                Console.WriteLine("\nDish name: " + recipe.Name);
+                Console.WriteLine("YOU WILL NEED THE FOLLOWING INGREDIENTS:");
 
-            Console.WriteLine("Dish name: " + recipe.Name);
-            Console.WriteLine("\n");
-            Console.WriteLine("YOU WILL NEED THE FOLLOWING INGREDIENTS:");
+                // Sort ingredients alphabetically by name
+                Array.Sort(recipe.Ingredients, (a, b) => a.Name.CompareTo(b.Name));
 
-            // Sort ingredients alphabetically by name
-            Array.Sort(recipe.Ingredients, (a, b) => a.Name.CompareTo(b.Name));
+                // Loop to display ingredients with name, quantity, and unit
+                foreach (Ingredient ingredient in recipe.Ingredients)
+                {
+                    Console.WriteLine("- " + ingredient);
+                }
 
-            // Loop to display ingredients with name, quantity, and unit
-            foreach (Ingredient ingredient in recipe.Ingredients)
-            {
-                Console.WriteLine("- " + ingredient);
-            }
+                Console.WriteLine("HERE ARE THE STEPS TO FOLLOW:");
 
-            Console.WriteLine("HERE ARE THE STEPS TO FOLLOW:");
-
-            // Loop to display steps
-            foreach (var step in recipe.Steps)
-            {
-                Console.WriteLine("- " + step);
+                // Loop to display steps
+                foreach (var step in recipe.Steps)
+                {
+                    Console.WriteLine("- " + step);
+                }
             }
         }
 
         // Method to scale recipe
-        public void Scale(Recipe recipe)
+        public void Scale(List<Recipe> recipes)
         {
-            if (recipe.Ingredients == null)
+            if (recipes.Count == 0)
             {
-                Console.WriteLine("No recipe entered yet.");
+                Console.WriteLine("No recipes entered yet.");
+                return;
+            }
+
+            Console.WriteLine("Enter the name of the recipe you want to scale:");
+            string recipeName = Console.ReadLine();
+
+            Recipe recipe = recipes.Find(r => r.Name.Equals(recipeName, StringComparison.OrdinalIgnoreCase));
+            if (recipe == null)
+            {
+                Console.WriteLine("Recipe not found.");
                 return;
             }
 
@@ -185,27 +190,11 @@
             Console.WriteLine("Recipe scaled successfully!");
         }
 
-        // Method to reset recipe quantities
-        public void ResetQuantities(Recipe recipe)
+        // Method to clear all recipe data
+        public void ClearData(List<Recipe> recipes)
         {
-            if (recipe.Ingredients == null)
-            {
-                Console.WriteLine("No recipe entered yet.");
-                return;
-            }
-
-            Console.WriteLine("Resetting quantities to original values not implemented. Use Clear Data to reset all data.");
-        }
-
-        // Method to clear recipe data
-        public void ClearData(Recipe recipe)
-        {
-            // Reset recipe properties to null
-            recipe.Name = null;
-            recipe.Ingredients = null;
-            recipe.Steps = null;
-            Console.WriteLine("Data cleared successfully");
+            recipes.Clear();
+            Console.WriteLine("All data cleared successfully");
         }
     }
 }
-//--------------------------end of file-------------------------
