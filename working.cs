@@ -132,6 +132,18 @@ namespace recipe_App
             }
         }
 
+        // Method to display all recipes in alphabetical order
+        public void DisplayRecipes(List<Recipe> recipes)
+        {
+            if (recipes.Count == 0)
+            {
+                Console.WriteLine("No recipes entered yet.");
+                return;
+            }
+
+            // Sort recipes alphabetically by name
+            recipes.Sort((a, b) => a.Name.CompareTo(b.Name));
+
             // Loop to display each recipe
             foreach (Recipe recipe in recipes)
             {
