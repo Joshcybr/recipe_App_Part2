@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace recipe_App
 {
     public class working
@@ -8,7 +9,7 @@ namespace recipe_App
         {
             // Properties for recipe name, ingredients, and steps
             public string Name { get; set; }
-            public string[] Ingredients { get; set; }
+            public Ingredient[] Ingredients { get; set; }
             public string[] Steps { get; set; }
 
             // Constructor to initialize properties
@@ -17,6 +18,27 @@ namespace recipe_App
                 Name = null;
                 Ingredients = null;
                 Steps = null;
+            }
+        }
+
+        // Ingredient class to store name, quantity, and unit
+        public class Ingredient
+        {
+            public string Name { get; set; }
+            public double Quantity { get; set; }
+            public string Unit { get; set; }
+
+            public Ingredient(string name, double quantity, string unit)
+            {
+                this.Name = name;
+                this.Quantity = quantity;
+                this.Unit = unit;
+            }
+
+            // Override ToString for better display of Ingredient
+            public override string ToString()
+            {
+                return $"{Quantity} {Unit} of {Name}";
             }
         }
 
@@ -75,18 +97,27 @@ namespace recipe_App
         // Method to enter recipe details
         public void EnterRecipeDetails(Recipe recipe)
         {
-            Console.WriteLine("What is the name of your dish?");
+            Console.WriteLine("What is the name of your recipe?");
             recipe.Name = Console.ReadLine();
             Console.WriteLine("\n");
+
             Console.WriteLine("How many ingredients are there?");
             int ingredientsCount = int.Parse(Console.ReadLine());
-            recipe.Ingredients = new string[ingredientsCount];
+            recipe.Ingredients = new Ingredient[ingredientsCount];
 
             // Loop to input ingredients
             for (int i = 0; i < ingredientsCount; i++)
             {
-                Console.WriteLine("Enter ingredient " + (i + 1) + ":");
-                recipe.Ingredients[i] = Console.ReadLine();
+                Console.WriteLine("Enter name for ingredient {0}:", i + 1);
+                string name = Console.ReadLine();
+
+                Console.WriteLine("Enter quantity for ingredient {0}:", i + 1);
+                double quantity = double.Parse(Console.ReadLine());
+
+                Console.WriteLine("Enter unit for ingredient {0}:", i + 1);
+                string unit = Console.ReadLine();
+
+                recipe.Ingredients[i] = new Ingredient(name, quantity, unit);
             }
 
             Console.WriteLine("How many steps are there?");
@@ -97,7 +128,7 @@ namespace recipe_App
             // Loop to input steps
             for (int i = 0; i < stepsCount; i++)
             {
-                Console.WriteLine("Enter step " + (i + 1) + ":");
+                Console.WriteLine("Enter step {0}:", i + 1);
                 recipe.Steps[i] = Console.ReadLine();
             }
         }
@@ -105,14 +136,23 @@ namespace recipe_App
         // Method to display recipe
         public void DisplayRecipe(Recipe recipe)
         {
+            if (recipe.Name == null)
+            {
+                Console.WriteLine("No recipe entered yet.");
+                return;
+            }
+
             Console.WriteLine("Dish name: " + recipe.Name);
             Console.WriteLine("\n");
             Console.WriteLine("YOU WILL NEED THE FOLLOWING INGREDIENTS:");
 
-            // Loop to display ingredients
-            for (int i = 0; i < recipe.Ingredients.Length; i++)
+            // Sort ingredients alphabetically by name
+            Array.Sort(recipe.Ingredients, (a, b) => a.Name.CompareTo(b.Name));
+
+            // Loop to display ingredients with name, quantity, and unit
+            foreach (Ingredient ingredient in recipe.Ingredients)
             {
-                Console.WriteLine("- " + recipe.Ingredients[i]);
+                Console.WriteLine("- " + ingredient);
             }
 
             Console.WriteLine("HERE ARE THE STEPS TO FOLLOW:");
@@ -127,6 +167,12 @@ namespace recipe_App
         // Method to scale recipe
         public void Scale(Recipe recipe)
         {
+            if (recipe.Ingredients == null)
+            {
+                Console.WriteLine("No recipe entered yet.");
+                return;
+            }
+
             Console.WriteLine("Enter the scale factor:");
             double scale = double.Parse(Console.ReadLine());
             Console.WriteLine("\n");
@@ -135,14 +181,22 @@ namespace recipe_App
             // Loop to scale ingredients
             for (int i = 0; i < recipe.Ingredients.Length; i++)
             {
-                Console.WriteLine("\n");
-                Console.WriteLine($"Enter quantity for {recipe.Ingredients[i]}:");
-                double quantity = double.Parse(Console.ReadLine());
-                double scaledQuantity = quantity * scale;
-                Console.WriteLine($"{scaledQuantity} {recipe.Ingredients[i]}");
-
+                recipe.Ingredients[i].Quantity *= scale;
+                Console.WriteLine(recipe.Ingredients[i]);
             }
             Console.WriteLine("Recipe scaled successfully!");
+        }
+
+        // Method to reset recipe quantities
+        public void ResetQuantities(Recipe recipe)
+        {
+            if (recipe.Ingredients == null)
+            {
+                Console.WriteLine("No recipe entered yet.");
+                return;
+            }
+
+            Console.WriteLine("Resetting quantities to original values not implemented. Use Clear Data to reset all data.");
         }
 
         // Method to clear recipe data
@@ -154,16 +208,5 @@ namespace recipe_App
             recipe.Steps = null;
             Console.WriteLine("Data cleared successfully");
         }
-
-        // Method to reset recipe quantities
-        public void ResetQuantities(Recipe recipe)
-        {
-            // Reset recipe properties to null
-            recipe.Name = null;
-            recipe.Ingredients = null;
-            recipe.Steps = null;
-            Console.WriteLine("Quantities reset successfully");
-        }
     }
 }
-//------------------------------END  OF FILE--------------------------------

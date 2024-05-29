@@ -13,18 +13,15 @@ namespace recipe_App
 {
 
 
-    class Program
-    {
-        
-        static void Main(string[] args)
+        class Program
+        {
+            static void Main(string[] args)
             {
-                working working = new working();
-                working.Menu(new working.Recipe());
+                working app = new working();
+                working.Recipe recipe = new working.Recipe();
+                app.Menu(recipe);
             }
         }
     }
-
-    
-
 
 //start of file
