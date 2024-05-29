@@ -22,24 +22,28 @@ namespace recipe_App
             }
         }
 
-        // Ingredient class to store name, quantity, and unit
+        // Ingredient class to store name, quantity, unit, calories, and food group
         public class Ingredient
         {
             public string Name { get; set; }
             public double Quantity { get; set; }
             public string Unit { get; set; }
+            public double Calories { get; set; }
+            public string FoodGroup { get; set; }
 
-            public Ingredient(string name, double quantity, string unit)
+            public Ingredient(string name, double quantity, string unit, double calories, string foodGroup)
             {
                 this.Name = name;
                 this.Quantity = quantity;
                 this.Unit = unit;
+                this.Calories = calories;
+                
             }
 
             // Override ToString for better display of Ingredient
             public override string ToString()
             {
-                return $"{Quantity} {Unit} of {Name}";
+                return $"{Quantity} {Unit} of {Name} ({Calories} calories, {FoodGroup})";
             }
         }
 
@@ -116,7 +120,12 @@ namespace recipe_App
                 Console.WriteLine("Enter unit for ingredient {0}:", i + 1);
                 string unit = Console.ReadLine();
 
-                recipe.Ingredients[i] = new Ingredient(name, quantity, unit);
+                Console.WriteLine("Enter calories for ingredient {0}:", i + 1);
+                double calories = double.Parse(Console.ReadLine());
+
+               
+
+                recipe.Ingredients[i] = new Ingredient(name, quantity, unit, calories);
             }
 
             Console.WriteLine("How many steps are there?");
