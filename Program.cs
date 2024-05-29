@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace recipe_App
 //st10263292
@@ -11,17 +12,13 @@ namespace recipe_App
 //https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/
 //https://github.com/Joshcybr/recipe_App.git
 {
-
-
-        class Program
+    class Program
+    {
+        static void Main(string[] args)
         {
-            static void Main(string[] args)
-            {
-                working app = new working();
-                working.Recipe recipe = new working.Recipe();
-                app.Menu(recipe);
-            }
+            working app = new working();
+            List<working.Recipe> recipes = new List<working.Recipe>();
+            app.Menu(recipes);
         }
     }
-
-//start of file
+}
