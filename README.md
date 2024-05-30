@@ -2,22 +2,32 @@
 Welcome to the Recipe App! This console application allows you to manage your recipes conveniently. You can enter recipe details, display recipes, scale recipes, reset quantities, and clear all data.
 
 #how to use:
-- enter your name and get greeted by the app.
-- Enter Recipe Details: Add the name of the dish, list of ingredients, and cooking steps.
-- Display Recipe: View the details of a recipe including its ingredients and steps.
-- Scale Recipe: Adjust ingredient quantities based on a scale factor.
-- Reset Quantities: Clear the recipe details.
-- Clear All Data: Reset the entire recipe app.
+ enter your name and get greeted by the app.
+  Enter recipe details:
+-Enter the name of the recipe.
+-Enter the number of ingredients and their details (name, quantity, unit, calories, and food group).
+-Enter the number of steps needed.
+-Enter each step.
+ Display Recipe:
+-Displays all recipes sorted alphabetically.
+-Shows the ingredients and steps for each recipe.
+-Displays a warning if the total calories exceed 300.
 
+ Scale Recipe:
+-Enter the name of the recipe to scale.
+-Enter the scaling factor to adjust the quantities of the ingredients.
+
+clear all data:
+-Clears all the recipes from the list.
+Exit:
+-Exits the application.
 
 #i used :
 - C#.NET Framework
--visual studio 
+-visual studio
 
-![image](https://github.com/Joshcybr/recipe_App/assets/105593188/9b566a6b-4fde-4390-b07c-036269466021)
-![image](https://github.com/Joshcybr/recipe_App/assets/105593188/cdbc50bd-22d5-49ac-9c7c-d51c0193c578)
 
-- Joshua(https://github.com/Joshcybr/recipe_App.git)
+
 
 
 #Refferances
