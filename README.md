@@ -1,3 +1,6 @@
+
+ I made several  improvements to the Recipe App based on the feedback i received to enhance its functionality and user experience. Firstly, the application now allows users to enter detailed information for a single recipe, including the name, quantity, and unit of measurement for each ingredient, ensuring comprehensive data capture. When displaying recipes, the app now shows all relevant details, including the name, quantity, and unit of each ingredient. Error handling has been implemented however not fully. I created more   error messages, improving the robustness of the application. The layout has been enhanced with better spacing and separator lines.I tryed using  colored text for improved readability but i cou;dmt get it to work. Additionally, scaling now correctly adjusts units of measurement and the scaled recipe is displayed accurately. A function to reset scaled recipes to their final values has been added and  Finally, more meaningful comments and separator lines between methods have been added to improve code readability and maintainability.
+
 # recipe_App_Part2
 Welcome to the Recipe App! This console application allows you to manage your recipes conveniently. You can enter recipe details, display recipes, scale recipes, reset quantities, and clear all data.
 
