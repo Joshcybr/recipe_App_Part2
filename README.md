@@ -1,5 +1,6 @@
 # recipe_App_Part2
-Welcome to the Recipe App! This console application allows you to manage your recipes conveniently. You can enter recipe details, display recipes, scale recipes, reset quantities, and clear all data.
+The Recipe App is a application designed to help users manage their recipes. It allows users to enter recipe details, display the recipes, scale ingredients, and clear all data. Additionally, the app calculates the total calories of each recipe and provides a warning if the total exceeds 300 calories.
+
 
 #how to use:
  enter your name and get greeted by the app.
@@ -27,7 +28,7 @@ Exit:
 -visual studio
 
 
-Githube link
+#Github link
 https://github.com/Joshcybr/recipe_App_Part2/tree/master
 
 #Refferances
