@@ -27,11 +27,16 @@ Exit:
 -visual studio
 
 
-
-
+Githube link
+https://github.com/Joshcybr/recipe_App_Part2/tree/master
 
 #Refferances
-https://youtu.be/8FmE_-QXg3Y?si=iKJwYtzjlpXv17UH
+
+//https://youtu.be/8FmE_-QXg3Y?si=iKJwYtzjlpXv17UH
 //https://youtu.be/wxznTygnRfQ?si=msepBdxsLkkQ0cWg
 //https://www.w3schools.com/cs/cs_user_input.php
 //https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/
+//https://github.com/Joshcybr/recipe_App.git
+//https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/generics-and-arrays
+//https://www.geeksforgeeks.org/c-sharp-delegates/
+
