@@ -1,4 +1,5 @@
-﻿using System;
+﻿//--------------start of program-----------------------
+using System;
 using System.Collections.Generic;
 
 namespace recipe_App
@@ -108,19 +109,19 @@ namespace recipe_App
             // Loop to input ingredients
             for (int i = 0; i < ingredientsCount; i++)
             {
-                Console.WriteLine("Enter name for ingredient {0}:", i + 1);
+                Console.WriteLine("Enter the name for ingredient {0}:", i + 1);
                 string name = Console.ReadLine();
 
-                Console.WriteLine("Enter quantity for ingredient {0}:", i + 1);
+                Console.WriteLine("Enter the quantity for ingredient {0}:", i + 1);
                 double quantity = double.Parse(Console.ReadLine());
 
-                Console.WriteLine("Enter unit for ingredient {0}:", i + 1);
+                Console.WriteLine("Enter unit of measuremant for ingredient {0}:", i + 1);
                 string unit = Console.ReadLine();
 
-                Console.WriteLine("Enter calories for ingredient {0}:", i + 1);
+                Console.WriteLine("Enter the amount of calories for ingredient {0}:", i + 1);
                 double calories = double.Parse(Console.ReadLine());
 
-                Console.WriteLine("Enter food group for ingredient {0} (Starchy foods, Vegetables and fruits, Dry beans, peas, lentils and soya, Chicken, fish, meat and eggs, Milk and dairy products, Fats and oil, Water):", i + 1);
+                Console.WriteLine("Enter food group for ingredient {0} (\n-Starchy foods,\n -Vegetables and fruits,\n -Dry beans, peas, lentils and soya,\n -Chicken, \n -fish,\n -meat and eggs,\n -Milk and dairy products,\n -Fats and oil,\n -Water):", i + 1);
                 string foodGroup = Console.ReadLine();
 
                 recipe.Ingredients.Add(new Ingredient(name, quantity, unit, calories, foodGroup));
@@ -231,3 +232,4 @@ namespace recipe_App
         }
     }
 }
+//--------------end of program-----------------------
