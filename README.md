@@ -1,4 +1,4 @@
-# recipe_App
+# recipe_App_Part2
 Welcome to the Recipe App! This console application allows you to manage your recipes conveniently. You can enter recipe details, display recipes, scale recipes, reset quantities, and clear all data.
 
 #how to use:
