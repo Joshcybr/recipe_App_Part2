@@ -92,7 +92,9 @@ namespace recipe_App
                     default:
                         Console.WriteLine("Invalid choice. Please try again.\n");
                         break;
-
+                    case "6":
+                        FilterRecipes(recipes);
+                        break;
                 }
             }
         }
@@ -244,10 +246,53 @@ namespace recipe_App
             recipes.Clear();
             Console.WriteLine("All data cleared successfully\n");
         }
+        public void FilterRecipes(List<Recipe> recipes)
+        {
+            Console.WriteLine("Choose a filter option:");
+            Console.WriteLine("1. Filter by ingredient");
+            Console.WriteLine("2. Filter by food group");
+            Console.WriteLine("3. Filter by maximum calories");
 
-    
+            string filterChoice = Console.ReadLine();
+
+            switch (filterChoice)
+            {
+                case "1":
+                    Console.WriteLine("Enter the name of the ingredient:");
+                    string ingredientName = Console.ReadLine().ToLower();
+
+                    var filteredByIngredient = recipes.FindAll(recipe =>
+                        recipe.Ingredients.Any(ingredient => ingredient.Name.ToLower().Contains(ingredientName)));
+
+                    DisplayRecipes(filteredByIngredient);
+                    break;
+
+                case "2":
+                    Console.WriteLine("Enter the food group:");
+                    string foodGroup = Console.ReadLine();
+
+                    var filteredByFoodGroup = recipes.FindAll(recipe =>
+                        recipe.Ingredients.Any(ingredient => ingredient.FoodGroup.Equals(foodGroup, StringComparison.OrdinalIgnoreCase)));
+
+                    DisplayRecipes(filteredByFoodGroup);
+                    break;
+
+                case "3":
+                    Console.WriteLine("Enter the maximum number of calories:");
+                    double maxCalories = double.Parse(Console.ReadLine());
+
+                    var filteredByCalories = recipes.FindAll(recipe =>
+                        recipe.Ingredients.Sum(ingredient => ingredient.Calories * ingredient.Quantity) <= maxCalories);
+
+                    DisplayRecipes(filteredByCalories);
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid choice. Please try again.\n");
+                    break;
+
+            }
         }
     }
-
+}
 //--------------end of program----------------------
- 
