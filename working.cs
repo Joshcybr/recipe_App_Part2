@@ -1,6 +1,7 @@
 ﻿//--------------start of program-----------------------
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace recipe_App
 {
@@ -64,8 +65,8 @@ namespace recipe_App
                 Console.WriteLine("2. Display recipes");
                 Console.WriteLine("3. Scale recipe");
                 Console.WriteLine("4. Clear all data");
-                Console.WriteLine("5. Exit\n");
-
+                Console.WriteLine("5. Exit");
+                Console.WriteLine("6. Filter\n");
                 string choice = Console.ReadLine();
 
                 // Switch case to handle user choices
@@ -91,6 +92,7 @@ namespace recipe_App
                     default:
                         Console.WriteLine("Invalid choice. Please try again.\n");
                         break;
+
                 }
             }
         }
@@ -184,6 +186,18 @@ namespace recipe_App
                 {
                     Console.WriteLine("Warning: This recipe has over 300 calories!");
                 }
+                if (totalCalories < 200)
+                {
+                    Console.WriteLine("This recipe is low in calories, suitable for a snack.");
+                }
+                else if (totalCalories >= 200 && totalCalories <= 500)
+                {
+                    Console.WriteLine("This recipe has moderate calories, suitable for a balanced meal.");
+                }
+                else
+                {
+                    Console.WriteLine("This recipe is high in calories and should be consumed sparingly.");
+                }
             }
             Console.WriteLine();
         }
@@ -230,6 +244,10 @@ namespace recipe_App
             recipes.Clear();
             Console.WriteLine("All data cleared successfully\n");
         }
+
+    
+        }
     }
-}
-//--------------end of program-----------------------
+
+//--------------end of program----------------------
+ 
